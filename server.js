@@ -1,21 +1,27 @@
-import express from "express";
-import dotenv from "dotenv";
-import cookieParser from "cookie-parser";
-import cors from "cors";
-import { connectDB } from "./databse/connection.js";
-import UserRoutes from "./routes/UserRoutes.js";
+const express = require("express");
+const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
+const UserRoutes = require("./routes/UserRoutes");
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const connectDB = require("./database/connection");
 
 connectDB();
 
-app.use(cors({
-  origin: "https://canova-frontend.netlify.app",
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000", // frontend on local dev
+      "https://canova-frontend.netlify.app", // frontend on Netlify
+    ],
+    credentials: true, // allow cookies
+  })
+);
+
 app.use(express.json());
 app.use(cookieParser());
 
