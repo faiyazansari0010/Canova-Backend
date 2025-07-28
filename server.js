@@ -14,11 +14,8 @@ connectDB();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000", // frontend on local dev
-      "https://canova-frontend.netlify.app", // frontend on Netlify
-    ],
-    credentials: true, // allow cookies
+    origin: "http://localhost:5173", // for local frontend
+    credentials: true, // allow cookies (JWTs in HttpOnly)
   })
 );
 
