@@ -6,7 +6,7 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: async (req, file) => {
     const type = req.query.type;
-    console.log("req.query - ", req.query)
+    console.log("req.query - ", req.query);
 
     const folder = "canova_uploads";
 
@@ -36,7 +36,7 @@ const storage = new CloudinaryStorage({
     console.log("ext:", ext); // should be "jpg"
     console.log("allowed:", allowed); // should be ["jpg", "jpeg", "png"]
 
-    if (!allowed || !allowed.includes(ext)) {
+    if (type !== "raw" && (!allowed || !allowed.includes(ext))) {
       throw new Error("Invalid file type");
     }
 

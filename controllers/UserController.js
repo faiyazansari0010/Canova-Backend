@@ -13,7 +13,7 @@ const signup = async (req, res) => {
 
     const userExists = await UserModel.findOne({ email });
     if (userExists) {
-      return res.status(409).json({ message: "User already exists" });
+      return res.status(409).json({ message: "User already exists. Please Sign in." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -53,12 +53,12 @@ const login = async (req, res) => {
 
     const user = await UserModel.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ message: "User does not exist. Please sign up first" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ message: "Invalid credentials. Please fill correct email and password" });
     }
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
