@@ -6,19 +6,26 @@ const {
   sendOtp,
   verifyOtp,
   resetPassword,
-  getUserOnRefresh,
-  uploadFile
+  uploadFile,
+  publishForm,
+  getUser,
+  updateUserData,
+  saveForm,
+  logout,
 } = require("../controllers/UserController");
 
 const router = express.Router();
 
 router.post("/signup", signup);
 router.post("/login", login);
-router.get("/me", getUserOnRefresh);
 router.post("/send-otp", sendOtp);
 router.post("/verify-otp", verifyOtp);
 router.post("/reset-password", resetPassword);
-
 router.post("/upload", upload.single("file"), uploadFile);
+router.post("/publish-form", publishForm);
+router.get("/get-user/:email", getUser);
+router.post("/updateUserData", updateUserData);
+router.post("/saveForm", saveForm);
+router.post("/logout", logout);
 
 module.exports = router;
