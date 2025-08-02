@@ -24,6 +24,11 @@ app.use(cookieParser());
 
 app.use("/user", UserRoutes);
 
+app.get("/", (req, res) => {
+  res.status(200).send("Canova Backend is Running");
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
