@@ -14,7 +14,10 @@ connectDB();
 
 app.use(
   cors({
-    origin: "https://canova-frontend.netlify.app",
+    origin: [
+      "http://localhost:5173",
+      "https://canova-frontend.netlify.app",
+    ],
     credentials: true,
   })
 );
