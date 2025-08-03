@@ -183,7 +183,9 @@ const resetPassword = async (req, res) => {
 };
 
 const uploadFile = async (req, res) => {
+  console.log("Upload route hit")
   try {
+    console.log("Upload req - ", req);
     return res.status(200).json({
       url: req.file.path,
       public_id: req.file.filename,
