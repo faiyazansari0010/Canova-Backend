@@ -4,12 +4,18 @@ const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
 
 const signup = async (req, res) => {
+  console.log("Incoming signup request...");
+  console.log("Request headers:", req.headers);
+  console.log("Request body:", req.body);
+
   try {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
+
+    console.log(req.body);
 
     const userExists = await UserModel.findOne({ email });
     if (userExists) {
@@ -183,7 +189,7 @@ const resetPassword = async (req, res) => {
 };
 
 const uploadFile = async (req, res) => {
-  console.log("Upload route hit")
+  console.log("Upload route hit");
   try {
     console.log("Upload req - ", req);
     return res.status(200).json({
