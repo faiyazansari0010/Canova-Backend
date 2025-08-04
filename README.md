@@ -124,7 +124,7 @@ Fully responsive layout matching Figma breakpoints
 
 🧪 Demo Credentials
 Use the following test account for exploring the app:
-Email: faiyaz@gmail.com
+Email: faiyazsems0010@gmail.com
 Password: faiyazansari0010
 
 Live Demo link - https://canova-frontend.netlify.app
