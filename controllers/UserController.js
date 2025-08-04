@@ -107,6 +107,9 @@ const getUser = async (req, res) => {
 };
 
 const sendOtp = async (req, res) => {
+  console.log("Incoming signup request...");
+  console.log("Request headers:", req.headers);
+  console.log("Request body:", req.body);
   const { email } = req.body;
   if (!email) return res.status(400).json({ message: "Email is required" });
 
